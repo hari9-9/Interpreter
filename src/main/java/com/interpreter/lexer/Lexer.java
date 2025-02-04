@@ -4,44 +4,29 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Lexer {
-    private final String source;
+    private final Scanner scanner;
     private final List<Token> tokens = new ArrayList<>();
-    private int current = 0;
 
     public Lexer(String source) {
-        this.source = source;
+        this.scanner = new Scanner(source);
+    }
+
+    private void addToken(TokenType type, String lexeme) {
+        tokens.add(new Token(type, lexeme, null));
     }
 
     public List<Token> scanTokens() {
-        while (!isAtEnd()) {
-            char c = advance();
+        while (!scanner.isAtEnd()) {
+            char c = scanner.advance();
             switch (c) {
-                case '(':
-                    tokens.add(new Token(TokenType.LEFT_PAREN, "(", null));
-                    break;
-                case ')':
-                    tokens.add(new Token(TokenType.RIGHT_PAREN, ")", null));
-                    break;
-                case '{':
-                    tokens.add(new Token(TokenType.LEFT_BRACE,"{",null));
-                    break;
-                case '}':
-                    tokens.add(new Token(TokenType.RIGHT_BRACE,"}",null));
-                    break;
-                default:
-                    // Ignore other characters for now
-                    break;
+                case '(' -> addToken(TokenType.LEFT_PAREN, "(");
+                case ')' -> addToken(TokenType.RIGHT_PAREN, ")");
+                case '{' -> addToken(TokenType.LEFT_BRACE, "{");
+                case '}' -> addToken(TokenType.RIGHT_BRACE, "}");
+                default -> {} // Ignore other characters
             }
         }
-        tokens.add(new Token(TokenType.EOF, "EOF", null)); // Append EOF token
+        addToken(TokenType.EOF, "EOF");
         return tokens;
-    }
-
-    private boolean isAtEnd() {
-        return current >= source.length();
-    }
-
-    private char advance() {
-        return source.charAt(current++);
     }
 }
