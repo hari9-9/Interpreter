@@ -21,4 +21,5 @@ set -e # Exit early if any commands fail
 #
 # - Edit this to change how your program runs locally
 # - Edit .codecrafters/run.sh to change how your program runs remotely
-exec java -jar /tmp/codecrafters-build-interpreter-java/codecrafters-interpreter.jar "$@"
+exec java -cp /tmp/codecrafters-build-interpreter-java/codecrafters-interpreter.jar com.interpreter.Main "$@"
+

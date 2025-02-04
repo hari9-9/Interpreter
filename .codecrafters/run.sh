@@ -8,4 +8,5 @@
 
 set -e # Exit on failure
 
-exec java -jar /tmp/codecrafters-build-interpreter-java/codecrafters-interpreter.jar "$@"
+exec java -cp /tmp/codecrafters-build-interpreter-java/codecrafters-interpreter.jar com.interpreter.Main "$@"
+

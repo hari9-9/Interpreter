@@ -1,10 +1,14 @@
+package com.interpreter;
+
+import com.interpreter.lexer.Lexer;
+import com.interpreter.lexer.Token;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.List;
 
 public class Main {
   public static void main(String[] args) {
-    // You can use print statements as follows for debugging, they'll be visible when running tests.
     System.err.println("Logs from your program will appear here!");
 
     if (args.length < 2) {
@@ -28,12 +32,11 @@ public class Main {
       System.exit(1);
     }
 
-    // Uncomment this block to pass the first stage
+    Lexer lexer = new Lexer(fileContents);
+    List<Token> tokens = lexer.scanTokens();
 
-     if (fileContents.length() > 0) {
-       throw new RuntimeException("Scanner not implemented");
-     } else {
-       System.out.println("EOF  null"); // Placeholder, remove this line when implementing the scanner
-     }
+    for (Token token : tokens) {
+      System.out.println(token);
+    }
   }
 }
