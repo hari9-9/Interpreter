@@ -13,8 +13,10 @@ public class Token {
 
     @Override
     public String toString() {
-        return type + " " + (lexeme != null ? lexeme : "") + " null";
+        if (type == TokenType.EOF) {
+            return "EOF  null";
+        }
+        return type + " " + lexeme + " " + literal;
     }
-
 
 }
