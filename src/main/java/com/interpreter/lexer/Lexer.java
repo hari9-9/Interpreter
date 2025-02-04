@@ -23,6 +23,12 @@ public class Lexer {
                 case ')' -> addToken(TokenType.RIGHT_PAREN, ")");
                 case '{' -> addToken(TokenType.LEFT_BRACE, "{");
                 case '}' -> addToken(TokenType.RIGHT_BRACE, "}");
+                case ',' -> addToken(TokenType.COMMA , ",");
+                case '.' -> addToken(TokenType.DOT , ".");
+                case '+' -> addToken(TokenType.PLUS, "+");
+                case '-' -> addToken(TokenType.MINUS , "-");
+                case '*' -> addToken(TokenType.STAR,"*");
+                case ';' -> addToken(TokenType.SEMICOLON,";");
                 default -> {} // Ignore other characters
             }
         }
