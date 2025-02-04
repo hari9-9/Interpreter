@@ -22,6 +22,12 @@ public class Lexer {
                 case ')':
                     tokens.add(new Token(TokenType.RIGHT_PAREN, ")", null));
                     break;
+                case '{':
+                    tokens.add(new Token(TokenType.LEFT_BRACE,"{",null));
+                    break;
+                case '}':
+                    tokens.add(new Token(TokenType.RIGHT_BRACE,"}",null));
+                    break;
                 default:
                     // Ignore other characters for now
                     break;
